@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Profile - GD Capital
+{% endblock title %}
+{% block body %}
+<section class="py-5 dark-bg" style="min-height: 70vh;display:flex;flex-direction:column;justify-content:center;align-items:center
+">
+    <div class="container">
+        <div>
+            <a href="/dashboard" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">My Profile</h1>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Username</p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="invested-amount" class="inv-amt m-0" style="display:inline">{{user.username}}</h4>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4" style="transform:scale(1.01)">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Name </p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="present-amount" class="inv-amt m-0" id="present-amount" style="display:inline">{{user.first_name|capfirst}} {{user.last_name|capfirst}}</h4>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4" style="transform:scale(1.01)">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Email </p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="present-amount" class="inv-amt m-0" id="present-amount" style="display:inline">{{user.email}}</h4>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Mobile</p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="invested-amount" class="inv-amt m-0" style="display:inline">{{user.profile.mobile}}</h4>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4" style="transform:scale(1.01)">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Profession </p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="present-amount" class="inv-amt m-0" id="present-amount" style="display:inline">{{user.profile.profession}}</h4>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4" style="transform:scale(1.01)">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">Plantype </p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <h4 id="present-amount" class="inv-amt m-0" id="present-amount" style="display:inline">{{user.profile.plantype|capfirst}}</h4>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% comment %} <div class="row">
+            <div class="col-lg-4 col-md-4">
+                
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a href="/withdraw" class="wdrw-card">
+                    <div class="wdrw-card card dashboard-card px-3 mt-3" style="transform:scale(1.01);background-color: #434343 !important;box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.2);">
+                        <div class="card-body">
+                            <div class="text-center" style="display:flex; justify-content:center">
+                                <h6 class="m-0" style="color:#ece6dc;">Edit Profile</h6>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                
+            </div>
+        </div> {% endcomment %}
+    </div>
+    
+</section>
+
+{% endblock body %}

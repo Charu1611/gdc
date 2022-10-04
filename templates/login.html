@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<title>Login | GD Capital</title>
+</head>
+<body>
+<section class="login_page">
+  <div class="card login-card py-5">
+    <div class="card-body px-5">
+      <div>
+        <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle"></i></a>
+      </div>
+      <div class="text-center">
+        <img class="login-logo" src="{% static 'images/logo.png' %}" alt="">
+      </div>
+      
+      <div class="login-content text-center mt-4">
+        <form enctype="multipart/form-data" method="POST" id="login-form" class="login-form" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control form-input py-2" name="username" id="username" placeholder="Enter username"/>
+            </div>
+    
+            <div class="form-group mt-4">
+                <input type="password" class="form-control form-input py-2" name="password" id="password" placeholder="Enter password"/>
+            </div>
+            <div class="mt-2 text-start" style="display:flex; justify-content:start;align-items:center">
+              <input type="checkbox" onclick="viewPassword()"> <span class="ms-1" style="font-size: 0.7rem"> Show Password</span>
+            </div>
+            <button type="submit" class="btn login-button mt-2"> Login</button>
+        </form>
+        {% comment %} <div class="loginhere text-end ">
+            <a href="{% url 'password_reset' %}" class="text-muted"   style="color:#000;font-size: 0.8rem;text-decoration: none;"><i>Forgot Password</i> </a>
+            
+        </div> {% endcomment %}
+    </div>
+    
+    </div>
+  </div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script>
+  function viewPassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>

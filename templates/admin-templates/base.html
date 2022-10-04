@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Panel- GD Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    {% if request.user.is_superuser %}
+    <!-- Vertical navbar -->
+    <div class="vertical-nav dark-bg" id="sidebar">
+        <div class="py-4 px-3 mb-4 dark-bg">
+            <div class="media d-flex align-items-center">
+                <img loading="lazy" src="{% static 'images/logo.png' %}" alt="..."
+                    width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow">
+                <div class="media-body">
+                    <h4 class="m-0" style="font-weight:700;color:#ece6dc;">GD Capital</h4>
+                    <p class="font-weight-normal text-muted mb-0 welcome-text">Welcome <span style="color:red;">{{request.user.username|title}}</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0 mt-2">MENU</p>
+        
+        <ul class="nav flex-column mb-0">
+            
+            <li class="nav-item">
+                <a href="/admin-home" class="nav-link text-dark ">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin-all-transactions" class="nav-link text-dark">
+                    <i class="fa fa-upload mr-3 text-primary fa-fw"></i>
+                    All Transactions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/signup" class="nav-link text-dark">
+                    <i class="fa fa-plus mr-3 text-primary fa-fw"></i>
+                    Add New User
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin-all-users" class="nav-link text-dark">
+                    <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                    All User Profiles
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/regular-update" class="nav-link text-dark">
+                    <i class="fa fa-calendar mr-3 text-primary fa-fw"></i>
+                    Flexible Regular Update
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/fixed-rate-page" class="nav-link text-dark">
+                    <i class="fa fa-certificate mr-3 text-primary fa-fw"></i>
+                    Fixed Regular Update
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin-withdrawal-requests" class="nav-link text-dark">
+                    <i class="fa fa-angle-right mr-3 text-primary fa-fw"></i>
+                    Withdrawal Requests
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin" class="nav-link text-dark">
+                    <i class="fa fa-lock mr-3 text-primary fa-fw"></i>
+                    Major Admin Panel
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/company-capital" class="nav-link text-dark">
+                    <i class="fa fa-barcode mr-3 text-primary fa-fw"></i>
+                    Company Capital
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/logout" class="nav-link text-dark">
+                    <i class="fa fa-exclamation mr-3 text-primary fa-fw"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <!-- End vertical navbar -->
+
+
+    <!-- Page content holder -->
+    <div class="page-content p-5" id="content">
+        <!-- Toggle button -->
+        <!-- <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+                class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button> -->
+        <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow px-4 mb-4"><i
+                class="fa fa-bars "></i></button>
+
+        <!-- Demo content -->
+        {% block content %}{% endblock content %}
+        
+    </div>
+    <!-- End demo content -->
+    {% else %}
+    You are not a authorised user to access this page. Go back to <a href="/">home</a>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+            });
+        });
+        $( document ).ready(function() {
+            $('#id_plantype').on('change', function (e) {
+                var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+            
+                if (valueSelected === 'fixed'){
+                    $('#fixed-rate-div').show();
+                } else {
+                    $('#fixed-rate-div').hide();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

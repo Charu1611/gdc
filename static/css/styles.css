@@ -1,0 +1,35 @@
+.login_page{
+    min-height: 100vh;
+    background-color: #272727;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card{
+    /* background-color: #ece6dc; */
+    background-color: #fff;
+    width: 35vw;
+    border-radius:6px;
+    box-shadow: 0 0 10px;
+}
+.login-logo{
+    border-radius:50%;
+    height: 6rem;
+    width: 6rem;
+}
+.login-button{
+    background-color: #272727;
+    color: #fff;
+    font-size: 0.8rem;
+    width: 7rem;
+}
+.login-button:hover{
+    color: #ece6dc;
+}
+.form-control:focus {
+    border-color: #272727;
+    box-shadow: none;
+  }
+.form-control{
+    font-size: 0.8rem;
+}

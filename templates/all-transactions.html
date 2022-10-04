@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+[{{request.user.username}}] All Transactions - GD Capital
+{% endblock title %}
+{% block body %}
+<section class="dark-bg">
+    <div class="container py-4">
+        <div>
+            <a href="/dashboard" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">All Transactions</h1>
+        </div>
+        <div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm" id="transTable2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Transaction Id</th>
+                                <th scope="col">Payment Mode</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Gateway Name</th>
+                                <th scope="col">Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for transaction in data %}
+                            {% if transaction.made_by == request.user.username %}
+                            <tr>
+                                <td>{{transaction.made_by}}</td>
+                                <td>{{transaction.made_on}}</td>
+                                <td>
+                                    {% if transaction.status == 'TXN_SUCCESS' %}
+                                    <span style="color:green">{{transaction.amount|floatformat:2}}</span>
+                                    
+                                    {% else %}
+                                    <span style="color:red">{{transaction.amount|floatformat:2}}</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{transaction.txn_id}}
+                                    </td>
+                                <td>{{transaction.payment_mode}}</td>
+                                <td>{{transaction.status}}</td>
+                                <td>{{transaction.gateway_name}}</td>
+                                <td>{{transaction.response_message}}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                            
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+        
+        
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready( function () {
+        $('#transTable').DataTable();
+        $('#transTable2').DataTable({
+            order: [[1, 'asc']],
+        });
+        var invested_amount = 0;                
+        var present_amount = 0;
+        $("#transTable tr").not(':first').each(function() {
+        invested_amount +=  getnum($(this).find("td:eq(1)").text());
+        present_amount +=  getnum($(this).find("td:eq(2)").text());
+        function getnum(t){
+            if(isNumeric(t)){
+                return parseInt(t,10);
+            }
+            return 0;
+                function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+                }
+        }
+        });
+        var percent = parseFloat(100*(present_amount-invested_amount)/invested_amount).toFixed(2);
+        if(invested_amount<present_amount){
+            $("#up-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','green');
+            $('#present-amount').css('color','green');
+        }else{
+            $("#down-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','red');
+            $('#present-amount').css('color','red');
+        }
+        $("#invested-amount").text(invested_amount);
+        $("#present-amount").text(present_amount);
+        $("#percent").text(percent);
+        
+    } );
+</script>
+{% endblock %}

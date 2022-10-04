@@ -1,0 +1,50 @@
+{% extends 'admin-templates/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+            <div class="card-body text-center ">
+                <h3 class="display-4" style="color:#272727; font-size:30px !important">Company Capital</h3>
+                <div class="text-center" style="display:flex; justify-content:center">
+                    <i class="bi bi-currency-rupee"></i>
+                    <h2 id="invested-amount" class="inv-amt m-0" style="display:inline; color:blue">{{total_capital|floatformat:2}}</h2>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm" id="transTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Commision from user</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Capital</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in datas %}
+                            <tr>
+                                <td>{{i.commission_by}}</td>
+                                <td>{{i.date}}</td>
+                                <td>₹{{i.commission|floatformat:2}}</td>
+                            </tr>
+                            {% endfor %}
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+        
+        
+            </div>
+        </div>
+        <script>
+            $(document).ready( function () {
+            $('#transTable').DataTable();
+        } );
+        </script>
+{% endblock content %}

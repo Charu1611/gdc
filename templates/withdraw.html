@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+Dashboard - GD Capital
+{% endblock title %}
+{% block body %}
+<style>
+    textarea:focus, 
+textarea.form-control:focus, 
+input.form-control:focus, 
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=number]:focus, 
+[type=text].form-control:focus, 
+[type=password].form-control:focus, 
+[type=email].form-control:focus, 
+[type=tel].form-control:focus, 
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+  border-color:#272727;
+}
+</style>
+<section class="py-5 dark-bg" style="min-height: 70vh;display:flex;flex-direction:column;justify-content:center;align-items:center
+">
+    <div class="container">
+        <div>
+            <a href="/dashboard" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">Put a Withdrawal Request</h1>
+        </div>
+        <div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+            <div class="card-body ">
+                
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-0">
+                            {{ form.requested_by|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6 mb-0">
+                            {{ form.amount|as_crispy_field }}
+                        </div>
+                        <div style="display:none" class="col-md-6 mb-0">
+                            {{ form.plantype|as_crispy_field }}
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="form-group text-end">
+                        <input type="submit" value="Make Request" class="btn btn-dark btn-sm">
+                    </div>
+                    
+                </form>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="text-end">
+            <h4 style="color:#ece6dc">Previous Requests</h4>
+        </div>
+        <div class="card shadow mb-4 mt-3" style="border: 0 !important;border-radius:15px">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm" id="transTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Requested by</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Withdraw Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            {% if i.requested_by == request.user.username %}
+                            <tr>
+                                <td>{{i.requested_by}}</td>
+                                <td>{{i.requested_on}}</td>
+                                <td>{{i.amount}}</td>
+                                {% if i.status == 'Roll Over' %}
+                                <td class="text-success">Approved</td>
+                                {% elif i.status is None %}
+                                <td class="text-info">Awaiting</td>
+                                {% else %}
+                                <td class="text-danger">Rejected</td>
+                                {% endif %}
+                                
+                            </tr>
+                            {% endif %}
+                            
+                            
+                            {% endfor %}
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+        
+        
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<script>
+    $(document).ready( function () {
+        $('#transTable').DataTable();
+        $('#transTable2').DataTable({
+            order: [[1, 'asc']],
+        });
+        var invested_amount = 0;                
+        var present_amount = 0;
+        $("#transTable tr").not(':first').each(function() {
+        invested_amount +=  getnum($(this).find("td:eq(1)").text());
+        present_amount +=  getnum($(this).find("td:eq(2)").text());
+        function getnum(t){
+            if(isNumeric(t)){
+                return parseInt(t,10);
+            }
+            return 0;
+                function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+                }
+        }
+        });
+        var percent = parseFloat(100*(present_amount-invested_amount)/invested_amount).toFixed(2);
+        if(invested_amount<present_amount){
+            $("#up-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','green');
+            $('#present-amount').css('color','green');
+        }else{
+            $("#down-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','red');
+            $('#present-amount').css('color','red');
+        }
+        $("#invested-amount").text(invested_amount);
+        $("#present-amount").text(present_amount);
+        $("#percent").text(percent);
+        
+    } );
+</script>
+{% endblock body %}
