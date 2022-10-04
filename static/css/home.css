@@ -3,9 +3,16 @@ body{
     background-color:#464343;
     font-family: 'Poppins', sans-serif;
 }
-.navbar-light{
+.navbar-dark{
     background-color: #272727;
     color: #ece6dc;
+}
+.navbar-toggler,.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0 !important;
 }
 /* .logo-home{
     border-radius: 50%;

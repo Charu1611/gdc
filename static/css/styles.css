@@ -8,7 +8,7 @@
 .login-card{
     /* background-color: #ece6dc; */
     background-color: #fff;
-    width: 35vw;
+    min-width: 35vw;
     border-radius:6px;
     box-shadow: 0 0 10px;
 }
