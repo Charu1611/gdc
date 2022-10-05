@@ -365,6 +365,8 @@ def response(request):
 
 def homepage(request):
     return render(request,"home.html")
+def comingsoon(request):
+    return render(request,"comingsoon.html")
 def profile(request):
     return render(request,"profile.html",{'user':request.user})
 def contactpage(request):

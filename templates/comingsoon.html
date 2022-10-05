@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <title>Coming Soon - GD Capital</title>
+    <style>
+        * {
+  font-family: 'montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  background: #f1f1f1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+}
+
+.countdown-col {
+  background: linear-gradient(0deg, rgba(27, 38, 56, 0.9), rgba(27, 38, 56, 0.9)), url(https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80) no-repeat center;
+  background-size: cover;
+}
+
+.time {
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.time span {
+  padding: 0 14px;
+  font-size: 15px;
+}
+
+.time span div {
+  font-size: 60px;
+  font-weight:900;
+}
+
+
+@media screen and (max-width: 900px) {
+  .col {
+    flex: 100%;
+  }
+}
+#launch-btn{
+    box-shadow: rgba(170, 168, 168, 0.35) 0px 5px 15px;
+}
+#launch-btn:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        
+        <div class="countdown-col col text-center">
+            
+          <div class="time middle" id="replace-sec">
+            <span id="s1"><div id="days">12</div> Days</span>
+            <span id="s2"><div id="hours">06</div> Hours</span>
+            <span id="s3"><div id="minutes">35</div> Minutes</span>
+            <span id="s4"><div id="seconds">54</div> Seconds</span>
+            <a href="/" class="btn btn-dark btn-lg px-5 py-2" id="launch-btn" style="display:none;font-size:1.1rem;">Launch</a>
+            <img src="https://cdn-icons-mp4.flaticon.com/512/6172/6172512.mp4" alt="">
+            
+          </div>
+        </div>
+        
+      </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <script>
+        let comingDate = new Date('Oct 5, 2022 11:17:40')
+
+let d = document.getElementById('days')
+let h = document.getElementById('hours')
+let m = document.getElementById('minutes')
+let s = document.getElementById('seconds')
+
+let x = setInterval(function() {
+  let now = new Date()
+  let selisih = comingDate.getTime() - now.getTime()
+
+  let days    = Math.floor(selisih / (1000 * 60 * 60 * 24))
+  let hours   = Math.floor(selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+  let minutes = Math.floor(selisih % (1000 * 60 * 60) / (1000 * 60))
+  let seconds = Math.floor(selisih % (1000 * 60) / 1000)
+
+  d.innerHTML = getTrueNumber(days)
+  h.innerHTML = getTrueNumber(hours)
+  m.innerHTML = getTrueNumber(minutes)
+  s.innerHTML = getTrueNumber(seconds)
+
+  if (selisih < 0) {
+    clearInterval(x)
+    d.innerHTML = '00';
+    h.innerHTML = '00';
+    m.innerHTML = '00';
+    s.innerHTML = '00';
+    document.getElementById('s1').style.display = 'none';
+    document.getElementById('s2').style.display = 'none';
+    document.getElementById('s3').style.display = 'none';
+    document.getElementById('s4').style.display = 'none';
+    document.getElementById('launch-btn').style.display = 'block';
+
+  }
+}, 1000)
+
+function getTrueNumber(x) {
+  if (x < 10) return '0' + x
+  else return x
+}
+    </script>
+</body>
+
+</html>
