@@ -25,7 +25,7 @@ SECRET_KEY = 'y+1u=%#ep2d2x#lb4@_cok5ea6r=hk^!@#*=uv9+!iqkyad5q4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gdfintech.in','167.71.233.233','127.0.0.1']
+ALLOWED_HOSTS = ['gdfintech.in','159.65.149.79','127.0.0.1']
 
 
 # Application definition
