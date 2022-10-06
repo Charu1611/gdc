@@ -302,7 +302,7 @@ def payment(request):
                     'INDUSTRY_TYPE_ID':'Retail',
                     'WEBSITE': settings.PAYTM_WEBSITE,
                     'CHANNEL_ID':'WEB',
-                    'CALLBACK_URL':'http://127.0.0.1:8000/response/',
+                    'CALLBACK_URL':'http://gdfintech.in/response/',
                 }
         param_dict = data_dict
         checksum = Checksum.generate_checksum(data_dict, MERCHANT_KEY)
