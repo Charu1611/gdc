@@ -36,8 +36,10 @@ Events - GD Capital
                 <div class="alert alert-danger alert-events">
                     <i class="bi bi-bug"></i> No upcoming events.
                 </div>
+            
+            {% endfor %}
             {% if request.user.is_superuser %}
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-lg-4 col-md-4">
                     
                 </div>
@@ -58,7 +60,6 @@ Events - GD Capital
                 </div>
             </div>
             {% endif %}
-            {% endfor %}
             
         </div>
         
