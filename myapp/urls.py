@@ -10,6 +10,7 @@ urlpatterns = [
     path('coming-soon/',views.comingsoon, name="comingsoon"),
     path('add-events/',views.addevents, name="addevents"),
     path('events/',views.events, name="events"),
+    path('contact-page/',views.contactuspage, name="contactuspage"),
     path('login/', views.handleLogin, name='login'),
     path('', views.homepage, name='homepage'),
     path('contact/', views.contactpage, name='contactpage'),

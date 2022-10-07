@@ -1,0 +1,50 @@
+{% extends 'admin-templates/base.html' %}
+{% load static %}
+{% block content %}
+
+<h3 class="display-4" style="color:#ece6dc; font-size:30px !important">Contact Page 
+</h3>
+<div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm" id="transTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.message}}</td>
+                        <td>{{i.date|date:"d M, Y"}}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#transTable').DataTable({
+        order: [[1, 'asc']],
+    });
+} );
+</script>
+{% endblock content %}

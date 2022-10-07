@@ -8,7 +8,7 @@ import json
 import requests
 from . import Checksum
 from django.http import HttpResponse
-from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital, Event
+from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital, Event, ContactUs
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.utils import timezone
@@ -370,6 +370,9 @@ def comingsoon(request):
 def events(request):
     data = Event.objects.all()
     return render(request,"events.html",{"data":data})
+def contactuspage(request):
+    data = ContactUs.objects.all()
+    return render(request,"admin-templates/contact-page.html",{"data":data})
 
 
 def addevents(request):
