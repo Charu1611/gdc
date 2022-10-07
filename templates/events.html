@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Events - GD Capital
+{% endblock title %}
+{% block body %}
+<section class="py-5 dark-bg" style="min-height: 70vh;display:flex;flex-direction:column;justify-content:center;align-items:center
+">
+    <div class="container">
+        <div>
+            <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">Events</h1>
+        </div>
+        
+        <div class="row mx-2 mt-4">
+            
+            {% for i in data %}
+            <div class="col-lg-6 col-md-6 col-12 mt-3">
+                <div class="  event-card py-3 h-100 d-flex">
+                    <div class="row" style="display: flex;flex-direction: row;justify-content:center;align-items:center;color: #272727;">
+                        <div class="col-2 text-center date-col py-2" style="display: flex;flex-direction: row;justify-content:center;align-items:center;color:#ece6dc;font-weight: 900;">
+                            {{i.date|date:"d M"}}
+                        </div>
+                        <div class="col-10">
+                            <h4 class="m-0 p-0">{{i.title}}</h4>
+                            <span style="font-size:0.8rem">
+                                {{i.description}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <div class="alert alert-danger alert-events">
+                    <i class="bi bi-bug"></i> No upcoming events.
+                </div>
+            {% if request.user.is_superuser %}
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <a href="/add-events" class="wdrw-card">
+                        <div class="wdrw-card card dashboard-card px-3 mt-2" style="transform:scale(1.01);background-color: #434343 !important;box-shadow: -4px -3px 45px 21px rgba(0,0,0,0.2);">
+                            <div class="card-body">
+                                <div class="text-center" style="display:flex; justify-content:center">
+                                    <h6 class="m-0" style="color:#ece6dc;">Add Event</h6>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+<script>
+    $(document).ready( function () {
+        $('#transTable').DataTable();
+        $('#transTable2').DataTable({
+            order: [[1, 'asc']],
+        });
+        var invested_amount = 0;                
+        var present_amount = 0;
+        $("#transTable tr").not(':first').each(function() {
+        invested_amount +=  getnum($(this).find("td:eq(1)").text());
+        present_amount +=  getnum($(this).find("td:eq(2)").text());
+        function getnum(t){
+            if(isNumeric(t)){
+                return parseInt(t,10);
+            }
+            return 0;
+                function isNumeric(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+                }
+        }
+        });
+        var percent = parseFloat(100*(present_amount-invested_amount)/invested_amount).toFixed(2);
+        if(invested_amount<present_amount){
+            $("#up-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','green');
+            $('#present-amount').css('color','green');
+        }else{
+            $("#down-arrow").css("display","inline-block");
+            $('#table-current-amount').css('color','red');
+            $('#present-amount').css('color','red');
+        }
+        $("#invested-amount").text(invested_amount);
+        $("#present-amount").text(present_amount);
+        $("#percent").text(percent);
+        
+    } );
+</script>
+{% endblock body %}

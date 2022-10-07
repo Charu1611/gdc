@@ -132,3 +132,19 @@ input[type=number]:focus,
   box-shadow: inset 0 -1px 0 #ddd;
   border-color: #272727;
 }
+.date-col{
+    background-color: red;
+    min-height: 5rem;
+    font-size: 1.4rem;
+    line-height:30px !important;
+}
+.event-card{
+    background-color:white;
+    min-height: 5rem;
+}
+.alert-events{
+    border-radius: 0 !important;
+    border: 0 !important;
+    background-color: #9b9595 !important;
+    color: #fff !important;
+}

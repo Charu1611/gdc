@@ -4,6 +4,7 @@ import uuid
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.conf import settings
+
 PLAN_TYPE = (
     ('fixed','FIXED'),
     ('flexible', 'FLEXIBLE'),
@@ -84,4 +85,12 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class Event(models.Model):
+    title = models.CharField(max_length=100, null=True, blank=True)
+    description = models.TextField(max_length=500, null=True, blank=True)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.title)
 

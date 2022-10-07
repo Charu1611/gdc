@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import UserProfile,RegularUpdate,Withdraw, ContactUs
+from .models import UserProfile,RegularUpdate,Withdraw, ContactUs, Event
+from django.forms.widgets import DateInput
 
 class ExtendedUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -61,4 +62,15 @@ class ContactForm(forms.ModelForm):
             'address': 'Address',
             'message': 'Message',
         }
-        
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ('title','description','date')
+        labels = {
+            'title': 'Title of Event',
+            'description': 'Description',
+            'date': 'Date of Events',
+        }
+        widgets = {
+            'date': DateInput(attrs={'type': 'date'}),
+        }

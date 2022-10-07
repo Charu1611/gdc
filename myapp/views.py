@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import ExtendedUserCreationForm, UserProfileForm, RegularUpdateForm, WithdrawForm, ContactForm
+from .forms import ExtendedUserCreationForm, UserProfileForm, RegularUpdateForm, WithdrawForm, ContactForm,EventForm
 from django.contrib.auth import authenticate,login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
@@ -8,7 +8,7 @@ import json
 import requests
 from . import Checksum
 from django.http import HttpResponse
-from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital
+from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital, Event
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.utils import timezone
@@ -367,6 +367,22 @@ def homepage(request):
     return render(request,"home.html")
 def comingsoon(request):
     return render(request,"comingsoon.html")
+def events(request):
+    data = Event.objects.all()
+    return render(request,"events.html",{"data":data})
+
+
+def addevents(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            new_record = form.save(commit=False)
+            new_record.save()
+            return redirect('/add-events')
+    form = EventForm()
+    return render(request,"admin-templates/add-events.html",{'form':form})
+
+
 def profile(request):
     return render(request,"profile.html",{'user':request.user})
 def contactpage(request):
