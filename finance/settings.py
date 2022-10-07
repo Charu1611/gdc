@@ -150,7 +150,7 @@ MEDIA_URL = '/media/'
 # payment gateway credentials
 PAYTM_CALLBACK_URL = "/response/"
 
-HOST_URL = "http://127.0.0.1:8000"
+HOST_URL = "http://gdfintech.in"
 PAYTM_MERCHANT_ID = 'UydGyS13677159825604'
 PAYTM_SECRET_KEY = 'M78ET5BmYW8EFC%h'
 PAYTM_WEBSITE = 'WEBSTAGING'
