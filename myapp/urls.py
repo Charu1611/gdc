@@ -8,8 +8,13 @@ from django.contrib import admin
 urlpatterns = [
     path('dashboard/',views.index, name="index"),
     path('coming-soon/',views.comingsoon, name="comingsoon"),
+    path('reviews-page/',views.reviewspage, name="reviewspage"),
     path('add-events/',views.addevents, name="addevents"),
+    path('add-past-events/',views.addpastevents, name="addpastevents"),
     path('events/',views.events, name="events"),
+    path('past-events/',views.past_events, name="past_events"),
+    path('feedback/',views.feedback, name="feedback"),
+    path('updatefeedback/<int:pk>/',views.updatefeedback, name="updatefeedback"),
     path('contact-page/',views.contactuspage, name="contactuspage"),
     path('login/', views.handleLogin, name='login'),
     path('', views.homepage, name='homepage'),

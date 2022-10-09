@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Events - GD Capital
+{% endblock title %}
+{% block body %}
+<section class="py-5 dark-bg" style="min-height: 70vh;display:flex;flex-direction:column;justify-content:center;align-items:center
+">
+    <div class="container">
+        <div>
+            <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+          </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">Past Events</h1>
+            
+        </div>
+        <div class="row mt-3">
+            {% for i in data %}
+            <div class="col-12 pt-4 text-center" style="border: 1px solid #ece6dc;border-radius:10px">
+                <div class="text-end text-white">
+                    <h3 class="pe-3 m-0">{{i.event_name}}</h3>
+                    <small class="pe-3">{{i.event_date |date:"d M, Y"}}</small>
+                </div>
+                <figure class="figure text-center">
+                    <img src="{{i.star_client_image.url}}" class="figure-img img-fluid rounded" style="border: 2px solid gold;height: 7rem;">
+                    <figcaption class="figure-caption text-center" style="color:#ece6dc;">{{i.star_client_name}} <br>
+                        <p class="badge bg-primary text-dark" style="background-color:gold !important;">Star Client</p>
+                    </figcaption>
+                </figure> <br>
+                
+                <div class="row text-center">
+                    {% if i.client1_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client1_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client1_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client2_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client2_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client2_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+
+                    {% if i.client3_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client3_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client3_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client4_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client4_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client4_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client5_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client5_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client5_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client6_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client6_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client6_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client7_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client7_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client7_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client8_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client8_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client8_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client9_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client9_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client9_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                    {% if i.client10_name %}
+                    <div class="col">
+                        <figure class="figure text-center">
+                            <img src="{{i.client10_image.url}}" class="figure-img img-fluid rounded" style="height: 5rem;">
+                            <figcaption class="figure-caption text-center" style="color:#ece6dc;font-size: 0.9rem;">{{i.client10_name}} <br>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    {% endif %}
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+        
+    </div>
+    
+</section>
+
+
+{% endblock body %}

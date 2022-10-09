@@ -1,0 +1,126 @@
+{% extends 'admin-templates/base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h3 class="display-4" style="color:#ece6dc; font-size:30px !important">Add Past Events 
+</h3>
+{% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success my-3" style="border:0 !important">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+<div class="card shadow my-4" style="border: 0 !important;border-radius:15px">
+
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6 mb-0">
+                    {{ form.event_name|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.event_date|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.star_client_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.star_client_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client1_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client1_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client2_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client2_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client3_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client3_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client4_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client4_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client5_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client5_name|as_crispy_field }}
+                </div>
+
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client6_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client6_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client7_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client7_name|as_crispy_field }}
+                </div>
+                
+                <div class="col-md-6 mb-0">
+                    {{ form.client8_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client8_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client9_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client9_name|as_crispy_field }}
+                </div>
+
+                <div class="col-md-6 mb-0">
+                    {{ form.client10_image|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                    {{ form.client10_name|as_crispy_field }}
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="form-group text-end">
+                <input type="submit" value="Add" class="btn btn-dark px-3" style="background-color:#464343;font-size:0.8rem;">
+            </div>
+            
+        </form>
+
+
+    </div>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#transTable').DataTable({
+        order: [[1, 'asc']],
+    });
+} );
+</script>
+{% endblock content %}

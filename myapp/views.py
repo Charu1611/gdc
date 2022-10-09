@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import ExtendedUserCreationForm, UserProfileForm, RegularUpdateForm, WithdrawForm, ContactForm,EventForm
+from .forms import ExtendedUserCreationForm, UserProfileForm, RegularUpdateForm, WithdrawForm, ContactForm,EventForm, ReviewForm, PastEventForm
 from django.contrib.auth import authenticate,login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
@@ -8,7 +8,7 @@ import json
 import requests
 from . import Checksum
 from django.http import HttpResponse
-from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital, Event, ContactUs
+from .models import UserProfile, RegularUpdate, Transaction, Withdraw, CompanyCapital, Event, ContactUs, Review,PastEvent
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.utils import timezone
@@ -272,7 +272,7 @@ def signUp(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
-            login(request, user)
+            # login(request, user)
             return redirect('admin_home')
     else:
         form = ExtendedUserCreationForm()
@@ -364,12 +364,47 @@ def response(request):
     return HttpResponse(status=200)
 
 def homepage(request):
-    return render(request,"home.html")
+    reviewdata = Review.objects.all()
+    return render(request,"home.html",{'data':reviewdata})
 def comingsoon(request):
     return render(request,"comingsoon.html")
+def past_events(request):
+    data = PastEvent.objects.all()
+    return render(request,"past-events.html",{'data':data})
+
+
+
+def feedback(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            new_record = form.save(commit=False)
+            new_record.save()
+            messages.success(request,"Thanks for the feedback")
+            return redirect('/feedback')
+    form = ReviewForm()
+    return render(request,"feedback.html",{"form": form})
+
+def updatefeedback(request,pk):
+    if request.method=="POST":
+        pi = Review.objects.get(pk=pk)
+        fm=ReviewForm(request.POST, instance=pi)
+        if fm.is_valid():
+            new_record = fm.save(commit=False)
+            new_record.save()
+            return redirect('/reviews-page')
+    else:
+        pi = Review.objects.get(pk=pk)
+        fm = ReviewForm(instance=pi)
+    return render(request,'admin-templates/update-feedback.html',{'form':fm})
+
+
 def events(request):
     data = Event.objects.all()
     return render(request,"events.html",{"data":data})
+def reviewspage(request):
+    data = Review.objects.all()
+    return render(request,"admin-templates/reviews-page.html",{"data":data})
 def contactuspage(request):
     data = ContactUs.objects.all()
     return render(request,"admin-templates/contact-page.html",{"data":data})
@@ -384,6 +419,16 @@ def addevents(request):
             return redirect('/add-events')
     form = EventForm()
     return render(request,"admin-templates/add-events.html",{'form':form})
+def addpastevents(request):
+    if request.method == 'POST':
+        form = PastEventForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_record = form.save(commit=False)
+            new_record.save()
+            messages.success(request,'Event added successfully')
+            return redirect('addpastevents')
+    form = PastEventForm()
+    return render(request,"admin-templates/add-past-events.html",{'form':form})
 
 
 def profile(request):

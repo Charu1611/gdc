@@ -10,7 +10,7 @@
 
             <div class="card-body">
                 
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
@@ -37,6 +37,7 @@
                     {{ profile_form.profession|as_crispy_field }}
                     {{ profile_form.user_commission|as_crispy_field }}
                     {{ profile_form.profilephoto|as_crispy_field }}
+                    {{ profile_form.pancard|as_crispy_field }}
                     <div class="row">
                         <div class="col-12">
                             {{ form.password1|as_crispy_field }}

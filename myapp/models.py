@@ -9,6 +9,10 @@ PLAN_TYPE = (
     ('fixed','FIXED'),
     ('flexible', 'FLEXIBLE'),
 )
+DISPLAY_TYPE = (
+    ('yes','YES'),
+    ('no', 'NO'),
+)
 User = get_user_model()
 class UserProfile(models.Model):
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -19,6 +23,7 @@ class UserProfile(models.Model):
     profession = models.CharField(max_length=200, null=False, default='')
     mobile = models.CharField(max_length=10, null=False, default='')
     profilephoto = models.ImageField(upload_to='userprofile/', default='images/profile.png')
+    pancard = models.ImageField(upload_to='pancard/', default='images/profile.png')
     # total_wallet_money = models.CharField(max_length=10, null=False, default='')
     def __str__(self):
         return self.user.username
@@ -93,4 +98,40 @@ class Event(models.Model):
 
     def __str__(self):
         return str(self.title)
+class Review(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    review = models.TextField(max_length=500, null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now)
+    display = models.CharField(max_length=200, choices=DISPLAY_TYPE, default='no',blank=True,null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+class PastEvent(models.Model):
+    event_name = models.CharField(max_length=100, null=True, blank=True)
+    event_date = models.DateTimeField()
+    star_client_image = models.ImageField(upload_to='pastevents/', default='images/profile.png')
+    star_client_name = models.CharField(max_length=100, null=True, blank=True)
+    client1_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client2_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client3_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client4_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client5_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client6_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client7_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client8_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client9_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client10_image = models.ImageField(upload_to='pastevents/', null=True, blank=True)
+    client1_name = models.CharField(max_length=100, null=True, blank=True)
+    client2_name = models.CharField(max_length=100, null=True, blank=True)
+    client3_name = models.CharField(max_length=100, null=True, blank=True)
+    client4_name = models.CharField(max_length=100, null=True, blank=True)
+    client5_name = models.CharField(max_length=100, null=True, blank=True)
+    client6_name = models.CharField(max_length=100, null=True, blank=True)
+    client7_name = models.CharField(max_length=100, null=True, blank=True)
+    client8_name = models.CharField(max_length=100, null=True, blank=True)
+    client9_name = models.CharField(max_length=100, null=True, blank=True)
+    client10_name = models.CharField(max_length=100, null=True, blank=True)
+    def __str__(self):
+        return str(self.event_name)
 

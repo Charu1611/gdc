@@ -148,3 +148,16 @@ input[type=number]:focus,
     background-color: #9b9595 !important;
     color: #fff !important;
 }
+.contact-sec{
+    /* background:linear-gradient(0deg, rgba(41, 41, 41, 0.7), rgba(41, 41, 41, 0.7)), url(https://images.moneycontrol.com/static-mcnews/2022/06/stocks_sensex_nifty_stockmarkets.jpg?impolicy=website&width=1600&height=900); */
+    background-attachment: fixed;
+    padding-top: 4.5rem;
+    padding-bottom:4.5rem;
+    color: white;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center;
+}
+.home-contact:hover .contact-span{
+    text-shadow: 2px 2px 2px #111111;
+}

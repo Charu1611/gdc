@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+Feedback
+{% endblock title %}
+{% block body %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+<section class="header-sec py-5 dark-bg">
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-md-6 col-lg-6 col-12" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+                <div class="text-center">
+                    <img  src="{% static 'images/contact-img.svg' %}" style="height: 20rem;border-radius: 10px;width:80%; " alt="">
+                    
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success my-3" style="border:0 !important">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 order-md-2" style="text-align: justify;color: #ece6dc;display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;">
+                <h3 class="" style="">Feedback</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 mb-0">
+                            {{ form.name|as_crispy_field }}
+                        </div>
+                        <div class="col-12 mb-0">
+                            {{ form.review|as_crispy_field }}
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="form-group text-start">
+                        <input type="submit" value="Submit" class="btn btn-dark" style="background-color:#464343;">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+{% endblock body %}
+

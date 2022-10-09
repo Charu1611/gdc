@@ -19,7 +19,7 @@
     {% if request.user.is_superuser %}
     <!-- Vertical navbar -->
     <div class="vertical-nav dark-bg" id="sidebar">
-        <div class="py-4 px-3 mb-4 dark-bg">
+        <div class="py-2 px-3 dark-bg">
             <div class="media d-flex align-items-center">
                 <img loading="lazy" src="{% static 'images/logo.png' %}" alt="..."
                     width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow">
@@ -32,7 +32,7 @@
         <div class="container">
             <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
           </div>
-        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0 mt-2">MENU</p>
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-1 mb-0 mt-2">MENU</p>
         
         <ul class="nav flex-column mb-0">
             
@@ -93,13 +93,25 @@
             <li class="nav-item">
                 <a href="/add-events" class="nav-link text-dark">
                     <i class="fa fa-star mr-3 text-primary fa-fw"></i>
-                    Add Events
+                    Add Upcoming Events
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/add-past-events" class="nav-link text-dark">
+                    <i class="fa fa-star mr-3 text-primary fa-fw"></i>
+                    Add Past Events
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/contact-page" class="nav-link text-dark">
-                    <i class="fa fa-star mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-check mr-3 text-primary fa-fw"></i>
                     Contact
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/reviews-page" class="nav-link text-dark">
+                    <i class="fa fa-envelope mr-3 text-primary fa-fw"></i>
+                    Reviews
                 </a>
             </li>
             <li class="nav-item">

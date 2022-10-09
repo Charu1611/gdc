@@ -3,6 +3,8 @@
 {% block title %}
 GD Capital
 {% endblock title %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 {% block body %}
 <section class="header-sec py-5">
     <div class="container">
@@ -101,32 +103,42 @@ GD Capital
 
   
   
-  <section class="reviews-sec py-5 dark-bg" style="">
+  <section class="reviews-sec py-5 dark-bg" >
     <div class="container">
         <h2 class="heading-text" style="color: #ece6dc">Revi<span style="color:#df1515;">ews</span>.</h2>
         <div class="container">
-            <div class="row mt-4 " style="display: flex;justify-content: center;align-items:center">
-                <div class="col-lg-3 col-md-3 my-2 p-4 mx-1" style="background-color: #fff;text-align: justify;border-radius:20px">
-                    <i class="bi bi-quote text-muted" style="font-size: 1.5rem;"></i> I have invested more than 20L with GD Capital and have been receiving good returns.
-                    <div class="text-end text-muted mt-2">
-                        <small>~ Punit Gadhwal</small>
+            
+            <div class="owl-carousel owl-theme mt-4">
+                {% for i in data %}
+                    {% if i.display == 'yes' %}
+                    <div>
+                        <div class="my-2 p-4 mx-1 h-100" style="background-color: #fff;text-align: justify;border-radius:20px;width:100%">
+                            <i class="bi bi-quote text-muted" style="font-size: 1.5rem;"></i> {{i.review}}
+                            <div class="text-end text-muted mt-2">
+                                <small>~ {{i.name}}</small>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-3 my-2 p-4 mx-1" style="background-color: #fff;text-align: justify;border-radius:20px">
-                    <i class="bi bi-quote text-muted" style="font-size: 1.5rem;"></i> I tried investing 1L with GD Capital and loved the returns. I am employed but love to have some extra money for party.
-                    <div class="text-end text-muted mt-2">
-                        <small>~ Sumit Gadhwal</small>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 my-2 p-4 mx-1" style="background-color: #fff;text-align: justify;border-radius:20px">
-                    <i class="bi bi-quote text-muted" style="font-size: 1.5rem;"></i> I am investing in SIP in GD Capital and receiving good and consistent returns.
-                    <div class="text-end text-muted mt-2">
-                        <small>~ Amit Gadhwal</small>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
                 
             </div>
+
+            <div class="text-center">
+                <a style="font-size:0.7rem" href="/feedback">Leave a feedback</a>
+            </div>
         </div>
+        
     </div>
   </section>
+  <section class="contact-sec" style="background:linear-gradient(0deg, rgba(41, 41, 41, 0.7), rgba(41, 41, 41, 0.7)), url('{% static 'images/contect.gif' %}');">
+    <div class="container text-center">
+        <a href="/contact" class="home-contact">
+            <h2 class="heading-text m-0 p-0" style="color: #ece6dc">Click here to <span style="color:#df1515;" class="contact-span">contact</span> us.</h2>
+        </a>
+    </div>
+  </section>
+
+
+  
 {% endblock body %}

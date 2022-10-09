@@ -17,6 +17,7 @@
                         <th scope="col">Profession</th>
                         <th scope="col">Mobile</th>
                         <th scope="col">Profile Photo</th>
+                        <th scope="col">PAN Card</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,11 @@
                         <td>{{i.profession}}</td>
                         <td>{{i.mobile}}</td>
                         <td><a target="_blank" href="{{i.profilephoto.url}}" alt="">show</a></td>
+                        <td>
+                            <a href="{{i.pancard.url}}" target="_blank">show</a>
+                            
+                            
+                        </td>
                     </tr>
                     {% endfor %}
                     
@@ -40,6 +46,7 @@
 
     </div>
 </div>
+
 <script>
     $(document).ready( function () {
     $('#transTable').DataTable();

@@ -11,7 +11,9 @@ Profile - GD Capital
             <a href="/dashboard" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
           </div>
         <div class="text-center">
+            
             <h1 style="color:#ece6dc">My Profile</h1>
+            <img style="height:3rem; width:3rem" class="rounded-circle mt-2" src="{{user.profile.profilephoto.url}}" alt="">
         </div>
         
         <div class="row">
@@ -86,6 +88,25 @@ Profile - GD Capital
                         
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card dashboard-card px-3 mt-4" style="transform:scale(1.01)">
+                    <div class="card-body">
+                        <p class="inv-txt profile-txt">PAN Card </p>
+                        <div class="text-center" style="display:flex; justify-content:center">
+                            <img src="{{user.profile.pancard.url}}" alt="" class="img-fluid" style="height:10rem;border-radius:12px;">                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                
             </div>
         </div>
         {% comment %} <div class="row">
