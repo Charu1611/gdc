@@ -365,7 +365,8 @@ def response(request):
 
 def homepage(request):
     reviewdata = Review.objects.all()
-    return render(request,"home.html",{'data':reviewdata})
+    upcomingdata = Event.objects.last()
+    return render(request,"home.html",{'data':reviewdata,'mydata':upcomingdata})
 def comingsoon(request):
     return render(request,"comingsoon.html")
 def past_events(request):
