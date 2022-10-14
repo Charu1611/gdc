@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'owl.carousel.min.css' %}">
 <link rel="stylesheet" href="{% static 'owl.theme.default.min.css' %}">
-<link rel="shortcut icon" href="favicon.png" type="image/png">
+<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand text-white" href="#" style="display:flex;justify-content:center;align-items:center;">
+            <a class="navbar-brand text-white" href="/" style="display:flex;justify-content:center;align-items:center;">
                 <img src="{% static 'images/logo-home.png' %}" alt="" width="45" height="20" class="  logo-home">
                 <span class="ms-1 brand-text" style="color:#ece6dc">GD CAPITAL</span>
               </a>
@@ -74,7 +74,9 @@
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
+                  
                     <h6><b>About GD Capital</b></h6>
+                    
                     <small style="text-align: justify">The money we manage is not our own. It belongs to many people – in many different locations – all trying to achieve their most important financial goals. It is an asset management company, focused on consistent returns through non-volatile assets.</small>
                 </div>
                 <div class="col-lg-2 col-md-2"></div>
@@ -90,15 +92,25 @@
                 </div>
                 <div class="col-lg-4 col-md-4 text-end">
                     <span class="">
-                        <a href="https://www.linkedin.com">
+                        
+                        <a href="https://www.linkedin.com/company/gd-capital-asset-management/" target="_blank">
                             <i style="color:#ed0909" class="bi bi-linkedin"></i>
                         </a>
+                        <a href="https://youtube.com/channel/UCjTNDW8qPKlmKIG0Dz5uyCw" target="_blank">
+                          <i style="color:#ed0909" class="bi bi-youtube ms-2"></i>
+                      </a>
                     </span>
                     <br>
-                    <small>Connect with us on LinkedIn</small>
+                    <small>Connect with us on social media</small>
                     <br>
                     <small class="">We would love to hear from you <br><a style="text-decoration: none;"
-                            href="mailto:bansalc981@gmail.com"><strong style="color: #9b9595">gdcapitalwork@gmail.com</strong></a></small>
+                            href="mailto:gdcapitalwork@gmail.com"><strong style="color: #9b9595">gdcapitalwork@gmail.com</strong></a></small>
+                            
+                            <div class="mt-2">
+                              <i class="bi bi-patch-check-fill" style="color: #ffbb00;"></i>
+                            
+                            <a class="certi-link" href="{% static 'pdf/certificate.pdf' %}" download style="margin-bottom: 0px !important;color: #9b9595"">We're Registered !</a>
+                            </div>
                 </div>
             </div>
         </div>
@@ -107,16 +119,18 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col-lg-12">
-                    <small>Copyright  © <a style="text-decoration: none; color: #9b9595;" href="/">GD Capital</a> </small>
+                  
+                    <small> Copyright  © <a style="text-decoration: none; color: #9b9595;" href="/">GD Capital</a> </small>
                 </div>
             </div>
         </div>
       </div>
-
+      
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 <script src="{% static 'jquery.min.js' %}"></script>
 <script src="{% static 'owl.carousel.min.js' %}"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 <script>
     $('.owl-carousel').owlCarousel({
     loop:true,

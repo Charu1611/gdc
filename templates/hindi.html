@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+About - GD Capital
+{% endblock title %}
+{% block body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<section class="py-5 dark-bg" style="min-height: 70vh;display:flex;flex-direction:column;justify-content:center;font-family: 'Noto Sans', sans-serif;
+align-items:center
+">
+    <div class="container">
+        <div>
+            <a href="/" class="text-dark back-arrow"><i class="bi bi-arrow-left-circle text-white" style="font-size: 1.2rem;"></i></a>
+        </div>
+        <div class=text-end>
+            <a style="font-size:0.7rem" href="/about">English</a> <span style="color:#fff;font-size: 0.7rem;">|</span> <a style="font-size:0.7rem" href="/about/hindi">हिंदी</a> 
+        </div>
+        <div class="text-center">
+            <h1 style="color:#ece6dc">हमारे बारे में</h1>
+        </div>
+        <div class="header-sec py-5 dark-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-12 py-4">
+                        <div class="text-center">
+                            <img  src="{% static 'images/about-img.svg' %}" style="height: 15rem;border-radius: 10px;width:80%; " alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-12 order-md-2 py-4" style="text-align: justify;color: #ece6dc;display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;">
+                    <h2 class="heading-text" style="color: #ece6dc">हम क्या <span style="color:#df1515;">करते हैं</span> ?</h2>
+                        <p class="mt-2"><i class="bi bi-chevron-right" style="color: #df1515"></i> हम बाजार का विश्लेषण करते हैं और अच्छी तरह से शोधित ट्रेडिगं करते हैं। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> हम मुख्य रूप से स्टॉक, कमोडिटी और करेंसी में ट्रेडिगं करते हैं। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> हम अपने निवेशकों के लिए सर्वोत्तम रिटर्न उत्पन्न करने की कोशिश कर रहे
+                            हैं। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i>हमारे निवेशकों के लिए हमारा अधिकतम रिटर्न 4% मासिक तक है।</p>
+                    </div>
+        
+                </div>
+                <div class="row py-5">
+                    <div class="col-lg-6 col-md-6 col-12 mt-4">
+                        <div class="card about-card h-100">
+                            <div class="card-body text-center">
+                                <i style="font-size: 3rem;color: #df1515" class="bi bi-tropical-storm"></i>
+                                <p style="font-weight: 600; font-size: 1.3rem ">हमारा मिशन</p>
+                                <p style="">जीडी कैपिटल आम आदमी को उनकी वित्तीय स्वतंत्रता हासिल करने में मदद
+                                    करने के लिए बनाया गया था। हम हमेशा आपकी देखभाल के लिए हैं, वह विकास
+                                    प्राप्त करें जो आपको प्राप्त करने के लिए आवश्यक है।</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 mt-4">
+                        <div class="card about-card h-100">
+                            <div class="card-body text-center">
+                                <i style="font-size: 3rem;color: #df1515" class="bi bi-eye-fill"></i>
+                                <p style="font-weight: 600; font-size: 1.3rem ">हमारा विजन</p>
+                                <p >विजन जीडी कैपिटल को निवेश के लिए वन स्टॉप सोल्युशन
+                                    बनाना और अपने
+                                    निवेशकों को सर्वोत्तम रिटर्न प्रदान करना है।हमारी निवेश योजनाओं के लिए हमारे
+                                    पास प्रवेश की बहुत कम बाधा है। यही हमें अलग बनाती है।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-5 " style="color:#fff; ">
+                    <div class="col-md-4 col-lg-4 col-12 text-center about-counter py-3" >
+                      <i style="font-size: 2rem;color: #df1515" class="bi bi-youtube"></i>
+                      <p style="font-size: 2.2rem;margin-bottom:0"><span class="counter">1500</span>+</p>
+                      <p style="font-size: 1rem;margin-bottom:0">सब्सक्राइबर</p>
+                      
+                    </div> 
+                    <div class="col-md-4 col-lg-4 col-12 text-center about-counter py-3">
+                      <i style="font-size: 2rem;color: #df1515" class="bi bi-person-plus-fill"></i>
+                      <p style="font-size: 2.2rem;margin-bottom:0"><span class="counter">29</span></p>
+                      <p style="font-size: 1rem;margin-bottom:0">क्लाइंट्स </p>
+                      
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-12 text-center about-counter py-3">
+                      <i style="font-size: 2rem;color: #df1515" class="bi bi-easel2-fill"></i>
+                      <p style="font-size: 2.2rem;margin-bottom:0"><span class="counter">1</span></p>
+                      <p style="font-size: 1rem;margin-bottom:0">सेशंस</p>
+                      
+                    </div>
+                  </div>
+                <div class="row pt-5">
+                    <div class="col-lg-6 col-md-6 col-12 ">
+                        <div class="text-center">
+                            <img  src="{% static 'images/performance.png' %}" style="height: 15rem;border-radius: 10px;width:80%; " alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-12" style="text-align: justify;color: #ece6dc;display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;">
+                    <h2 class="heading-text" style="color: #ece6dc">हम पर <span style="color:#df1515;">भरोसा क्यों</span> ?</h2>
+                        <p class="mt-2"><i class="bi bi-chevron-right" style="color: #df1515"></i> हम लगातार रिटर्न उत्पन्न करके बाजार के माध्यम सेआपकी संपत्ति को
+                            बढ़ाने के लिए हैं। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> हम सख्त जोखिम प्रबंधन नीति का पालन करते हैं। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> हमारा लॉक-इन-पीरियड 6 महीने का है, जो बाजार से कम है। <br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> पूंजी सुरक्षा के लिए, हम अपनी कंपनी के शेयरों को आवंटित करते हैं।<br>
+                            <i class="bi bi-chevron-right" style="color: #df1515"></i> शेयरों की कीमत प्रारंभिक निवेश के बराबर होगी।</p>
+
+                        </div>
+                        <div class="text-end">
+                            <a href="{% static 'pdf/detail.pdf' %}" download style="color: #df1515"><i class="bi mx-1 bi-download"></i>डाउनलोड करें</a>
+                        </div>
+                </div>
+            </div>
+          </div>
+        
+        
+        
+    </div>
+    
+</section>
+
+<script>
+    $('.counter').counterUp({
+  delay: 10,
+  time: 2000
+});
+
+</script>
+
+{% endblock body %}

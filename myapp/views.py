@@ -373,6 +373,11 @@ def past_events(request):
     data = PastEvent.objects.all()
     return render(request,"past-events.html",{'data':data})
 
+def about(request):
+    return render(request,"about.html")
+
+def hindi(request):
+    return render(request,"hindi.html")
 
 
 def feedback(request):

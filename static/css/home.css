@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 body{
     background-color:#464343;
     font-family: 'Poppins', sans-serif;
@@ -109,7 +110,7 @@ a{
     font-size: 0.9rem;
 }
 a:hover{
-    color: red;
+    color: red !important;
 }
 table.dataTable tbody th, table.dataTable tbody td{
     font-size:0.8rem;
@@ -160,4 +161,14 @@ input[type=number]:focus,
 }
 .home-contact:hover .contact-span{
     text-shadow: 2px 2px 2px #111111;
+}
+.about-card:hover{
+    border: 1px solid #fff !important ;
+}
+.about-card{
+    background-color: #464343;
+    color: white;
+}
+.about-counter{
+    background-color: #464343;
 }

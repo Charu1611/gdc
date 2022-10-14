@@ -7,6 +7,8 @@ from django.contrib.auth import views as auth_views
 from django.contrib import admin
 urlpatterns = [
     path('dashboard/',views.index, name="index"),
+    path('about/',views.about,name="about"),
+    path('about/hindi',views.hindi,name="hindi"),
     path('coming-soon/',views.comingsoon, name="comingsoon"),
     path('reviews-page/',views.reviewspage, name="reviewspage"),
     path('add-events/',views.addevents, name="addevents"),
