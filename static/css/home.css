@@ -46,8 +46,8 @@ body{
     align-items: center;
 }
 .team-sec .card-image{
-    width:5rem !important;
-    height:5rem;
+    width:4rem !important;
+    height:4rem;
 	border-radius: 50%;
 }
 .team-sec .card-body{
@@ -171,4 +171,9 @@ input[type=number]:focus,
 }
 .about-counter{
     background-color: #464343;
+}
+.owl-carousel .owl-stage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
